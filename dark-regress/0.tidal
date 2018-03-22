@@ -1,0 +1,23 @@
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+m1 <- midiStream devices "CH345 MIDI 1" 1 synthController
+m2 <- midiStream devices "CH345 MIDI 1" 3 synthController
+
+-- set tempo
+cps 1.3
+
+-- m1 $ n "c5"
+-- m1 $ n "c5 e4 b"
+
+m1 $ n "ef6 gf6 bf6"
+m1 $ n "[ef6 gf6 bf6, <ef4 ~ ~ df5 ~ ~ gf4 ~ ~ b3 ~ ~>]"
+m1 $ n "[ef6 gf6 bf6, <ef4 ~ df5 ~ gf4 ~ b3 ~>]"
+m1 $ n "[[ef6 gf6 bf6, ~ ~ [<af8 f8> <bf8 gf8 ef7>]], <ef4 ~ df5 ~ gf4 ~ b3 ~>]"
+m1 $ n "[[ef6 gf6 bf6, ~ ~ [<af8 f8> <bf8 gf8 ef7>, <df8 ef7> ~]], <ef4 ~ df5 ~ gf4 ~ b3 ~>, b8 b8 b8, ef8 bf8]"
+m1 $ n "[[ef6 gf6 <bf6 bf6 bf6 bf6 [bf6 b6 df7 ef7]>, ~ ~ [<af8 f8> <bf8 gf8 ef7>]], <ef4 ~ df5 ~ gf4 ~ b3 ~>]"
+m1 $ n "[ef8 gf8 bf8 df8, <ef6 ~ ~ ~ df7 ~ ~ ~ gf6 ~ ~ ~ b5 ~ ~ ~>]"
+
+m1 silence
